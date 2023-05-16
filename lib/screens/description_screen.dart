@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/theme/app_colors.dart';
+import 'package:movie_app/utils/text.dart';
 
 class DescriptionScreen extends StatelessWidget {
   final String? name;
@@ -28,8 +29,57 @@ class DescriptionScreen extends StatelessWidget {
             Container(
               height: 250,
               child: Stack(
-                children: [],
+                children: [
+                  Positioned(
+                    child: Container(
+                      height: 250,
+                      width: MediaQuery.of(context).size.width,
+                      child: Image.network(
+                        bannerurl!,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                      bottom: 10,
+                      child: AppText(text: "🌟 Average Rating - ${vote}"))
+                ],
               ),
+            ),
+            const SizedBox(height: 15),
+            Container(
+              padding: const EdgeInsets.all(10),
+              child: AppText(
+                text: name != null ? name.toString() : "Not loaded",
+                size: 24,
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.only(left: 10),
+              child: AppText(
+                text: "Releasing on - ${launch_on}",
+                size: 14,
+              ),
+            ),
+            Row(
+              children: [
+                Container(
+                  margin: const EdgeInsets.all(5),
+                  height: 200,
+                  width: 100,
+                  child: Image.network(
+                    posterurl.toString(),
+                  ),
+                ),
+                Flexible(
+                  child: Container(
+                    child: AppText(
+                      text: description.toString(),
+                      size: 18,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

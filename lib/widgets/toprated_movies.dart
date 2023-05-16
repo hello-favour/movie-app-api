@@ -43,6 +43,7 @@ class TopRatedMovies extends StatelessWidget {
                             ),
                           ),
                         ),
+                        const SizedBox(height: 10),
                         Container(
                           child: AppText(
                               text: toprated[index]["title"] != null
