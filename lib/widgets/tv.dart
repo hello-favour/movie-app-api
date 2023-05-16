@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:movie_app/screens/description_screen.dart';
 
 import 'package:movie_app/utils/text.dart';
 
@@ -29,7 +30,21 @@ class TvShow extends StatelessWidget {
               itemCount: tv.length,
               itemBuilder: (context, index) {
                 return InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return DescriptionScreen(
+                        name: tv[index]["titile"],
+                        bannerurl:
+                            "https://image.tmdb.org/t/p/w500${tv[index]["backdrop_path"]}",
+                        posterurl:
+                            "https://image.tmdb.org/t/p/w500${tv[index]["poster_path"]}",
+                        description: tv[index]["overview"],
+                        launch_on: tv[index]["release_date"],
+                        vote: tv[index]["vote_average"].toString(),
+                      );
+                    }));
+                  },
                   child: Container(
                     padding: const EdgeInsets.all(5.0),
                     width: 250,
