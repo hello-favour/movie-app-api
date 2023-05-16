@@ -55,14 +55,21 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: AppColors.appBlack,
       appBar: AppBar(
+        backgroundColor: Colors.amber,
         title: const AppText(
-          text: "Flutter Movie App ❤️❤️❤️",
+          text: "Flutter Movie App ❤️❤️",
+          color: AppColors.appBlack,
         ),
+        centerTitle: true,
+        toolbarHeight: 70,
       ),
       body: ListView(
         children: [
+          const SizedBox(height: 20),
           TvShow(tv: tv),
+          const SizedBox(height: 8),
           TopRatedMovies(toprated: topRatedMovies),
+          const SizedBox(height: 8),
           TrendingMovies(trending: trendingMovies),
         ],
       ),
