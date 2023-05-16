@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/theme/app_colors.dart';
+import 'package:movie_app/utils/text.dart';
+import 'package:movie_app/widgets/trending.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
 class Home extends StatefulWidget {
@@ -25,14 +28,18 @@ class _HomeState extends State<Home> {
       ),
     );
     Map trendingResult = await tmdbWithCustomLogs.v3.trending.getTrending();
-    Map topRatedMovies = await tmdbWithCustomLogs.v3.movies.getTopRated();
+    Map topRatedResult = await tmdbWithCustomLogs.v3.movies.getTopRated();
     Map tvResult = await tmdbWithCustomLogs.v3.tv.getPopular();
     setState(() {
-      trendingMovies = trendingResult["result"];
-      topRatedMovies = topRatedMovies["result"];
-      tv = tvResult["result"];
+      trendingMovies = trendingResult["results"];
+      topRatedMovies = topRatedResult["results"];
+      tv = tvResult["results"];
     });
+    // print(trendingResult);
+    // print(trendingResult["results"]);
     print(trendingMovies);
+    print(topRatedMovies);
+    print(tv);
   }
 
   @override
@@ -44,8 +51,16 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.appBlack,
       appBar: AppBar(
-        title: const Text("Flutter movie app"),
+        title: const AppText(
+          text: "Flutter Movie App ❤️❤️❤️",
+        ),
+      ),
+      body: ListView(
+        children: [
+          TrendingMovies(trending: trendingMovies),
+        ],
       ),
     );
   }
