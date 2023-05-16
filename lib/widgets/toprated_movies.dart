@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 import 'package:movie_app/utils/text.dart';
 
-class TrendingMovies extends StatelessWidget {
-  var trending = [];
-  TrendingMovies({
+class TopRatedMovies extends StatelessWidget {
+  var toprated = [];
+  TopRatedMovies({
     Key? key,
-    required this.trending,
+    required this.toprated,
   }) : super(key: key);
 
   @override
@@ -18,7 +18,7 @@ class TrendingMovies extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const AppText(
-            text: "Trending Movies",
+            text: "Top Rated Movies",
             size: 30,
           ),
           const SizedBox(height: 15),
@@ -26,7 +26,7 @@ class TrendingMovies extends StatelessWidget {
             height: 270,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: trending.length,
+              itemCount: toprated.length,
               itemBuilder: (context, index) {
                 return InkWell(
                   onTap: () {},
@@ -39,15 +39,14 @@ class TrendingMovies extends StatelessWidget {
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               image: NetworkImage(
-                                  "https://image.tmdb.org/t/p/w500${trending[index]["poster_path"]}"),
+                                  "https://image.tmdb.org/t/p/w500${toprated[index]["poster_path"]}"),
                             ),
                           ),
                         ),
-                        const SizedBox(height: 10),
                         Container(
                           child: AppText(
-                              text: trending[index]["title"] != null
-                                  ? trending[index]["title"]
+                              text: toprated[index]["title"] != null
+                                  ? toprated[index]["title"]
                                   : "loading"),
                         ),
                       ],

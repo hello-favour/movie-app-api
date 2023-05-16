@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/theme/app_colors.dart';
 import 'package:movie_app/utils/text.dart';
+import 'package:movie_app/widgets/toprated_movies.dart';
 import 'package:movie_app/widgets/trending.dart';
+import 'package:movie_app/widgets/tv.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
 class Home extends StatefulWidget {
@@ -59,6 +61,8 @@ class _HomeState extends State<Home> {
       ),
       body: ListView(
         children: [
+          TvShow(tv: tv),
+          TopRatedMovies(toprated: topRatedMovies),
           TrendingMovies(trending: trendingMovies),
         ],
       ),

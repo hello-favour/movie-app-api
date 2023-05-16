@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 import 'package:movie_app/utils/text.dart';
 
-class TrendingMovies extends StatelessWidget {
-  var trending = [];
-  TrendingMovies({
+class TvShow extends StatelessWidget {
+  var tv = [];
+  TvShow({
     Key? key,
-    required this.trending,
+    required this.tv,
   }) : super(key: key);
 
   @override
@@ -18,36 +18,40 @@ class TrendingMovies extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const AppText(
-            text: "Trending Movies",
+            text: "Popular Tv Shows Movies",
             size: 30,
           ),
           const SizedBox(height: 15),
           Container(
-            height: 270,
+            height: 200,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: trending.length,
+              itemCount: tv.length,
               itemBuilder: (context, index) {
                 return InkWell(
                   onTap: () {},
                   child: Container(
-                    width: 140,
+                    padding: const EdgeInsets.all(5.0),
+                    width: 250,
                     child: Column(
                       children: [
                         Container(
-                          height: 200,
+                          height: 140,
+                          width: 250,
                           decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
                             image: DecorationImage(
                               image: NetworkImage(
-                                  "https://image.tmdb.org/t/p/w500${trending[index]["poster_path"]}"),
+                                  "https://image.tmdb.org/t/p/w500${tv[index]["backdrop_path"]}"),
+                              fit: BoxFit.cover,
                             ),
                           ),
                         ),
                         const SizedBox(height: 10),
                         Container(
                           child: AppText(
-                              text: trending[index]["title"] != null
-                                  ? trending[index]["title"]
+                              text: tv[index]["original_name"] != null
+                                  ? tv[index]["original_name"]
                                   : "loading"),
                         ),
                       ],
