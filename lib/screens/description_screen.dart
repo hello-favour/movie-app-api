@@ -37,12 +37,12 @@ class DescriptionScreen extends StatelessWidget {
         child: ListView(
           children: [
             Container(
-              height: 250,
+              height: 500,
               child: Stack(
                 children: [
                   Positioned(
                     child: Container(
-                      height: 250,
+                      height: 500,
                       width: MediaQuery.of(context).size.width,
                       child: Image.network(
                         bannerurl!,
@@ -52,7 +52,10 @@ class DescriptionScreen extends StatelessWidget {
                   ),
                   Positioned(
                       bottom: 10,
-                      child: AppText(text: "🌟 Average Rating - ${vote}"))
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 5),
+                        child: AppText(text: "🌟 Average Rating - ${vote}"),
+                      ))
                 ],
               ),
             ),
@@ -71,25 +74,29 @@ class DescriptionScreen extends StatelessWidget {
                 size: 14,
               ),
             ),
-            Row(
-              children: [
-                Container(
-                  margin: const EdgeInsets.all(5),
-                  height: 200,
-                  width: 100,
-                  child: Image.network(
-                    posterurl.toString(),
-                  ),
-                ),
-                Flexible(
-                  child: Container(
-                    child: AppText(
-                      text: description.toString(),
-                      size: 18,
+            Container(
+              padding: const EdgeInsets.only(left: 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.all(5),
+                    height: 200,
+                    width: 100,
+                    child: Image.network(
+                      posterurl.toString(),
                     ),
                   ),
-                ),
-              ],
+                  Flexible(
+                    child: Container(
+                      child: AppText(
+                        text: description.toString(),
+                        size: 18,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
